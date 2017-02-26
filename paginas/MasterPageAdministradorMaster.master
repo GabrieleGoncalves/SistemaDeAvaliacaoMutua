@@ -1,0 +1,418 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageAdministradorMaster.master.cs" Inherits="paginas_MasterPageAdministradorMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta charset="UTF-8" />
+    <title>SAM | Sistema de Avaliação Mútua</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport' />
+    <!-- Bootstrap 3.3.2 -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <link href="../bootstrap/font-awesome-4.3.0/css/font-awesome.css" rel="stylesheet" />
+    <!-- Ionicons -->
+    <!-- <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" /> -->
+    <!-- Morris chart -->
+    <link href="../plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+    <!-- jvectormap -->
+    <link href="../plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <!-- Daterange picker -->
+    <!-- <link href="../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" /> -->
+    <!-- Theme style -->
+    <link href="../dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <!-- AdminLTE Skins. Choose a skin from the css/skins 
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="../dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="skin-blue">
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <header class="main-header">
+                <a href="Avaliador.aspx" class="logo">
+                    <img src="../imagens/logo.png" />
+                </a>
+                <nav class="navbar navbar-fixed-top" role="navigation">
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <%--<li class="dropdown notifications-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="label label-warning">10</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">Você tem 10 notificações</li>
+                                    <li>
+                                        <!-- inner menu: contains the actual data -->
+                                        <ul class="menu">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-users text-aqua"></i>5 new members joined today
+                        </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-warning text-yellow"></i>Very long description here that may not fit into the page and may cause design problems
+                        </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-users text-red"></i>5 new members joined
+                        </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart text-green"></i>25 sales made
+                        </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-user text-red"></i>You changed your username
+                        </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="footer"><a href="#">Ver todos</a></li>
+                                </ul>
+                            </li>--%>
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="../imagens/userSam.jpg" class="user-image" alt="User Image" />
+                                    <asp:Label runat="server" ID="lblUsuario2"></asp:Label>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="user-header">
+                                        <img src="../imagens/userSam.jpg" class="img-circle" alt="User Image" />
+                                        <p>
+                                            <asp:Label runat="server" ID="lblUsuario3"></asp:Label>
+
+                                            <small>Administrador Master</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="#" data-toggle="modal" data-target="#ModalEditarPerfil" class="btn btn-default btn-flat">Perfil</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="Login.aspx" class="btn btn-default btn-flat">Sair</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="../imagens/userSam.jpg" class="img-circle" alt="User Image" data-toggle="modal" data-target="#ModalEditarPerfil" />
+                        </div>
+                        <div class="pull-left info">
+                            <asp:Label runat="server" ID="lblUsuario1" Style="font-size: 14px"></asp:Label><br />
+                            <a href="#" data-toggle="modal" data-target="#ModalEditarPerfil" style="font-size: 12px"><i class='fa fa-gear'></i>Administrador Master</a>
+                        </div>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="header">MENU</li>
+                        <li><a href="AdministradorMaster.aspx"><i class="fa fa-home"></i>Home</a></li>
+                        <li><a href="CadastrarUsuario.aspx"><i class="fa fa-plus"></i>Cadastrar Usuário</a></li>
+                        <li><a href="GerenciarUsuario.aspx"><i class="fa fa-user"></i>Gerenciar Usuário</a></li>
+                        <li><a href="Historico.aspx"><i class="fa fa-clock-o"></i>Histórico</a></li>
+                        <li><a href="Backup.aspx"><i class="fa fa-save"></i>Backup</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#ModalVisualizarLog"><i class='fa fa-file-text-o'></i>Log</a></li>
+                        <li><a href="EscolherPerfil.aspx"><i class="fa fa-users"></i>Escolher Perfil</a></li>
+                        <li><a href="RedefinirSenha.aspx"><i class="fa fa-users"></i>Redefinir Senha</a></li>
+                        <li><a href="Login.aspx"><i class="fa fa-mail-forward (alias)"></i>Sair</a></li>
+                    </ul>
+                </section>
+            </aside>
+            <!-- MODAL VISUALIZAR LOG -->
+            <div class="modal fade" id="ModalVisualizarLog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content" style="text-align: center">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title" id="myModalLabel"><b>Visualizar Log</b></h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>A função do Log é captar os erros do sistema qe ocorreram com o usuário e organizá-lo em fluxo.</p>
+                                <%--<div class="form-group" style="text-align: left">                                    
+                                </div>--%>
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button ID="btnFecharModalVisualizarLog" runat="server" CssClass=" btn btn-default" data-dismiss="modal" Text="Fechar" />
+                                <asp:LinkButton ID="lkbSalvarLog" runat="server" CssClass="btn btn-success pull-left" OnClick="lkbSalvarLog_Click" Style="margin-right: 5px;" Text="<i class='fa fa-arrow-down'></i>  Salvar Log" />
+                                <%--<asp:LinkButton ID="lkbSalvarLog" runat="server" CssClass=" btn btn-primary" Text="<i class='fa fa-save'></i> Salvar" />--%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MODAL EDITAR PERFIL -->
+            <div class="modal fade" id="ModalEditarPerfil" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content" style="text-align: center">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title" id="H1"><b>Editar Perfil</b></h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="form-group" style="text-align: left">
+                                    <asp:Label ID="Label1" runat="server">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <br />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label>Nome: </label>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtNome" CssClass="form-control-txt" runat="server" Width="350"></asp:TextBox></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <br />
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <label>RG: </label>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtRG" CssClass="form-control-txt" runat="server"></asp:TextBox></td>
+                                                <td></td>
+                                                <td>
+                                                    <label>CPF: </label>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtCPF" CssClass="form-control-txt" runat="server"></asp:TextBox></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <br />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label>Telefone: </label>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtTelefone" CssClass="form-control-txt" runat="server"></asp:TextBox></td>
+                                                <td></td>
+                                                <td>
+                                                    <label>Celular: </label>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtCelular" CssClass="form-control-txt" runat="server"></asp:TextBox></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <br />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label>Email: </label>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtEmail" CssClass="form-control-txt" runat="server"></asp:TextBox></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <br />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label>Data de Nascimento: </label>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtDataDeNascimento" CssClass="form-control-txt" runat="server"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <hr style="color: #00ff90" />
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <br />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label>CEP: </label>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtCEP" CssClass="form-control-txt" runat="server"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <br />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label>Rua: </label>
+                                                </td>
+                                                <td colspan="2">
+                                                    <asp:TextBox ID="txtRua" CssClass="form-control-txt" runat="server" MaxLength="0" Width="350"></asp:TextBox>
+                                                </td>
+                                                <td>
+                                                    <p></p>
+                                                </td>
+                                                <td>
+                                                    <label>Número: </label>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtNumero" CssClass="form-control-txt" runat="server"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <br />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label>Bairro: </label>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtBairro" CssClass="form-control-txt" runat="server"></asp:TextBox>
+                                                </td>
+                                                <td>
+                                                    <label>Cidade: </label>
+                                                </td>
+                                                <td>
+                                                    <asp:TextBox ID="txtCidade" CssClass="form-control-txt" runat="server"></asp:TextBox>
+                                                </td>
+                                                <td>
+                                                    <label>Estado: </label>
+                                                </td>
+                                                <td>
+                                                   <asp:DropDownList ID="ddlEstado" CssClass="form-control-ddl" runat="server">
+                                        <asp:ListItem Selected="True">Selecione...</asp:ListItem>
+                                        <asp:ListItem>Acre</asp:ListItem>
+                                        <asp:ListItem>Alagoas</asp:ListItem>
+                                        <asp:ListItem>Amapá</asp:ListItem>
+                                        <asp:ListItem>Amazonas</asp:ListItem>
+                                        <asp:ListItem>Bahia</asp:ListItem>
+                                        <asp:ListItem>Ceará</asp:ListItem>
+                                        <asp:ListItem>Distrito Federal</asp:ListItem>
+                                        <asp:ListItem>Espiríto Santo</asp:ListItem>
+                                        <asp:ListItem>Góias</asp:ListItem>
+                                        <asp:ListItem>Maranhão</asp:ListItem>
+                                        <asp:ListItem>Mato Grosso</asp:ListItem>
+                                        <asp:ListItem>Mato Grosso do Sul</asp:ListItem>
+                                        <asp:ListItem>Minas Gerais</asp:ListItem>
+                                        <asp:ListItem>Paraná</asp:ListItem>
+                                        <asp:ListItem>Paraíba</asp:ListItem>
+                                        <asp:ListItem>Pará</asp:ListItem>
+                                        <asp:ListItem>Piauí</asp:ListItem>
+                                        <asp:ListItem>Pernambuco</asp:ListItem>
+                                        <asp:ListItem>Rio de Janeiro</asp:ListItem>
+                                        <asp:ListItem>Rio Grande do Norte</asp:ListItem>
+                                        <asp:ListItem>Rio Grande do Sul</asp:ListItem>
+                                        <asp:ListItem>Roraima</asp:ListItem>
+                                        <asp:ListItem>Rondônia</asp:ListItem>
+                                        <asp:ListItem>Santa Catarina</asp:ListItem>
+                                        <asp:ListItem>São Paulo</asp:ListItem>
+                                        <asp:ListItem>Sergipe</asp:ListItem>
+                                        <asp:ListItem>Tocantins</asp:ListItem>
+                                    </asp:DropDownList></td>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <br />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <br />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label></td>
+                                                <td>
+                                                    <asp:Label ID="lblMsg1" runat="server" Text=""></asp:Label></td>
+                                                <td>
+                                                    <asp:Label ID="lblMsg2" runat="server" Text=""></asp:Label></td>
+                                            </tr>
+                                        </table>
+                                    </asp:Label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <asp:Button ID="Button1" runat="server" CssClass=" btn btn-default" data-dismiss="modal" Text="Fechar" />
+                                <asp:LinkButton ID="LinkButton1" runat="server" CssClass=" btn btn-primary" Text="<i class='fa fa-save'></i> Salvar" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-wrapper">
+                <section class="content">
+                    <!-- CONTEÚDO AQUI -->
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </section>
+            </div>
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Versão</b> 2.0       
+                </div>
+                <strong>Copyright &copy; 2014-2015 Projeto SAM.</strong> All rights reserved.     
+            </footer>
+        </div>
+    </form>
+    <!-- Sparkline -->
+    <script src="../plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+    <!-- jvectormap -->
+    <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+    <script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+
+    <!-- iCheck -->
+    <script src="../plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+    <!-- SlimScroll 1.3.0 -->
+    <script src="../plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <!-- ChartJS 1.0.1 -->
+    <script src="../plugins/chartjs/Chart.min.js" type="text/javascript"></script>
+
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="../dist/js/pages/dashboard2.js" type="text/javascript"></script>
+
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js" type="text/javascript"></script>
+
+</body>
+</html>
+
+
