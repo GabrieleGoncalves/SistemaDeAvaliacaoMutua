@@ -43,6 +43,7 @@ public partial class paginas_CriarAvaliacao : System.Web.UI.Page
     public void carregagrid()
     {
         DataSet ava = Ava_AvaliacaoDB.SelectAll();
+        //DataSet ava = Ava_AvaliacaoDB.SelectAll();
         int qtd = ava.Tables[0].Rows.Count;
         if (qtd > 0)
         {
